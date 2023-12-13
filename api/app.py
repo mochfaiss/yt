@@ -10,11 +10,17 @@ app.config['FLASK_ENV'] = 'production'
 
 app = Flask(__name__)
     
-@app.route('/yt-trans', methods=['GET'])
+@app.route('/api/yt-trans', methods=['GET'])
 def get_transcript():
     
     video_id = request.args.get('video_id')
     secret = request.args.get('secret')
+
+    if not (video_id and secret):
+        return redirect('https://www.genelify.com')
+
+    if secret != 'e2312da35135dfcd690faaaf3510977f':
+        return redirect('https://www.genelify.com')
     
     try:
 
