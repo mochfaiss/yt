@@ -1,14 +1,8 @@
 from flask import Flask, jsonify, request, redirect
 from youtube_transcript_api import YouTubeTranscriptApi
-import logging
-
-log = logging.getLogger('werkzeug')
-log.setLevel(logging.ERROR)
 
 app = Flask(__name__)
 app.config['FLASK_ENV'] = 'production'
-
-app = Flask(__name__)
     
 @app.route('/transcript', methods=['GET'])
 def get_transcript():
@@ -52,6 +46,3 @@ def get_transcript():
     except Exception as e:
         
         return jsonify({'success': False, 'video_lang_code': '', 'transcript': [], 'error': str(e)})
-
-if __name__ == '__main__':
-    app.run(debug=False)
