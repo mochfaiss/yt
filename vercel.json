@@ -1,0 +1,14 @@
+{
+    "builds": [
+        {
+            "src":"api/app.py",
+            "use":"@vercel/python"
+        }
+    ],
+    "routes":[
+        {
+            "src":"/api/yt-trans", 
+            "dest":"api/app.py"
+        }
+    ]
+}
