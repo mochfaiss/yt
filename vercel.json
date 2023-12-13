@@ -7,7 +7,7 @@
     ],
     "routes":[
         {
-            "src":"/api/yt-trans", 
+            "src":"/(.*)", 
             "dest":"api/app.py"
         }
     ]

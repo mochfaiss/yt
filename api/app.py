@@ -10,17 +10,17 @@ app.config['FLASK_ENV'] = 'production'
 
 app = Flask(__name__)
     
-@app.route('/api/yt-trans', methods=['GET'])
+@app.route('/transcript', methods=['GET'])
 def get_transcript():
     
     video_id = request.args.get('video_id')
     secret = request.args.get('secret')
 
     if not (video_id and secret):
-        return redirect('https://www.genelify.com')
+        return "Forbidden"
 
     if secret != 'e2312da35135dfcd690faaaf3510977f':
-        return redirect('https://www.genelify.com')
+        return "Forbidden"
     
     try:
 
@@ -54,4 +54,4 @@ def get_transcript():
         return jsonify({'success': False, 'video_lang_code': '', 'transcript': [], 'error': str(e)})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
