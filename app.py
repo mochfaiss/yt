@@ -16,7 +16,6 @@ def get_transcript():
         return "Forbidden"
     
     try:
-
         transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
 
         lang = ''
@@ -25,11 +24,8 @@ def get_transcript():
         for transcript in transcript_list:
 
             if transcript.is_generated:
-                
                 lang = transcript.language_code
-
             else:
-
                 lang = transcript.language_code
     
         if lang:
@@ -41,7 +37,8 @@ def get_transcript():
             status = False
 
         return jsonify({'success': status, 'video_lang_code': lang, 'transcript': transcript_result})
-        
     except Exception as e:
-        
         return jsonify({'success': False, 'video_lang_code': '', 'transcript': [], 'error': str(e)})
+
+if __name__ == '__main__':
+    app.run()
