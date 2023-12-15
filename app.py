@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, redirect
+from flask import Flask, jsonify, request
 from youtube_transcript_api import YouTubeTranscriptApi
 
 app = Flask(__name__)
